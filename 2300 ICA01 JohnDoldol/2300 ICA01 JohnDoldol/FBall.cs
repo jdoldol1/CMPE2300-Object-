@@ -23,8 +23,8 @@ namespace _2300_ICA01_JohnDoldol
             {
                 //reposition ball to stay inside the cdrawer windows
                 //adjust only on the axis that violates bounds and only in same direction
-                _ballPoint.X = Math.Min(Math.Max(0, value.X), m_canvas.m_ciWidth);
-                _ballPoint.Y = Math.Min(Math.Max(0, value.Y), m_canvas.m_ciHeight);
+                _ballPoint.X = Math.Min(Math.Max(25, value.X), m_canvas.m_ciWidth-radius);
+                _ballPoint.Y = Math.Min(Math.Max(25, value.Y), m_canvas.m_ciHeight-radius);
             }
         }
         private FBall(CDrawer canvas)
@@ -49,11 +49,11 @@ namespace _2300_ICA01_JohnDoldol
         public void Tick()
         {
             //check if position is within bounds then flip if out of bounds
-            if (BallProperty.X < 0 + radius || BallProperty.X > m_canvas.m_ciWidth - radius)
+            if (BallProperty.X <= radius || BallProperty.X >= m_canvas.m_ciWidth - radius)
             {
                 BSpeed = new PointF(BSpeed.X * -1, BSpeed.Y);
             }
-            else if (BallProperty.Y < 0 + radius || BallProperty.Y > m_canvas.m_ciHeight - radius)
+            else if (BallProperty.Y <= radius || BallProperty.Y >= m_canvas.m_ciHeight - radius)
             {
                 BSpeed = new PointF(BSpeed.X, BSpeed.Y*-1);
             }
