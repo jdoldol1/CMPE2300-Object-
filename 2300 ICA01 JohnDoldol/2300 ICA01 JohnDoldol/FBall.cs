@@ -9,13 +9,15 @@ using GDIDrawer;
 namespace _2300_ICA01_JohnDoldol
 {
     class FBall
-    {
-        private CDrawer m_canvas;
-        private Random rand = new Random();
-        private const int radius = 25;
+    {        
+        private CDrawer _canvas;
+        private Random _rand = new Random();
+        private const int Radius = 25;
+        private PointF _ballPoint;
+
         public PointF BSpeed { get; private set; }
         public Color BColor { get; private set; }
-        private PointF _ballPoint;
+        
         public PointF BallProperty
         {
             get { return _ballPoint; }
@@ -23,14 +25,14 @@ namespace _2300_ICA01_JohnDoldol
             {
                 //reposition ball to stay inside the cdrawer windows
                 //adjust only on the axis that violates bounds and only in same direction
-                _ballPoint.X = Math.Min(Math.Max(25, value.X), m_canvas.m_ciWidth-radius);
-                _ballPoint.Y = Math.Min(Math.Max(25, value.Y), m_canvas.m_ciHeight-radius);
+                _ballPoint.X = Math.Min(Math.Max(25, value.X), _canvas.m_ciWidth-Radius);
+                _ballPoint.Y = Math.Min(Math.Max(25, value.Y), _canvas.m_ciHeight-Radius);
             }
         }
         private FBall(CDrawer canvas)
         {
-            m_canvas = canvas;
-            BSpeed = new PointF((float)(rand.NextDouble()*5 - 2.5),(float)(rand.NextDouble()*5-2.5));
+            _canvas = canvas;
+            BSpeed = new PointF((float)(_rand.NextDouble()*5 - 2.5),(float)(_rand.NextDouble()*5-2.5));
         }
         public FBall(CDrawer canvas, Color palette)
             : this(canvas)
@@ -44,16 +46,16 @@ namespace _2300_ICA01_JohnDoldol
         }
         public void Render()
         {
-            m_canvas.AddCenteredEllipse((int)_ballPoint.X, (int)_ballPoint.Y, radius * 2, radius * 2, BColor, 2, Color.Yellow);
+            _canvas.AddCenteredEllipse((int)_ballPoint.X, (int)_ballPoint.Y, Radius * 2, Radius * 2, BColor, 2, Color.Yellow);
         }
         public void Tick()
         {
             //check if position is within bounds then flip if out of bounds
-            if (BallProperty.X <= radius || BallProperty.X >= m_canvas.m_ciWidth - radius)
+            if (BallProperty.X <= Radius || BallProperty.X >= _canvas.m_ciWidth - Radius)
             {
                 BSpeed = new PointF(BSpeed.X * -1, BSpeed.Y);
             }
-            else if (BallProperty.Y <= radius || BallProperty.Y >= m_canvas.m_ciHeight - radius)
+            if (BallProperty.Y <= Radius || BallProperty.Y >= _canvas.m_ciHeight - Radius)
             {
                 BSpeed = new PointF(BSpeed.X, BSpeed.Y*-1);
             }

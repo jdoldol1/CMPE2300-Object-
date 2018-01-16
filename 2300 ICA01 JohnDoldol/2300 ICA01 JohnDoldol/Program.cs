@@ -16,7 +16,7 @@ namespace _2300_ICA01_JohnDoldol
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            tlabel form = new tlabel(); //create form object
+            Form1 form = new Form1(); //create form object
             Application.Run(); 
         }
     }

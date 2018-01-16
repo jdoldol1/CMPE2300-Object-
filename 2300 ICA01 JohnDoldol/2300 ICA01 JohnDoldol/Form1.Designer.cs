@@ -1,6 +1,6 @@
 ﻿namespace _2300_ICA01_JohnDoldol
 {
-    partial class tlabel
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
