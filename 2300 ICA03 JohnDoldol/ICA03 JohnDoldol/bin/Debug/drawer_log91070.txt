@@ -1,0 +1,4 @@
+﻿1/18/2018 : 8:38:46 AM - ----------------------------------------------------------------------
+1/18/2018 : 8:38:46 AM - Drawer Started...
+1/18/2018 : 8:38:48 AM - CDrawer::DrawerWindowSize : Cannot access a disposed object.
+Object name: 'DrawerWnd'.
